@@ -174,3 +174,41 @@ buf2.append("XYZ");
 System.out.println(buf1.toString());
 ~~~
 
+## null
+
+参照型の変数は、インスタンスのある場所を示す変数です。  
+変数を宣言しただけでインスタンスを代入しなかった場合は、何もないことを示す特別な値「null」が入っています。  
+宣言しただけで初期化（何らかのインスタンスの代入）を行っていない変数を使おうとすると、コンパイルエラーが発生します。  
+
+~~~java
+String str;
+// 初期化していない変数strを使おうとしているため
+// コンパイルエラーになる
+System.out.println(str.substring(1, 3));
+~~~
+
+「null」は、すべての参照型変数に代入可能です。
+
+~~~java
+String str = null;
+Integer val = null;
+Object obj = null;
+~~~
+
+「null」は何もないことを表すので、「null」が代入された変数を使うと「NullPointerException」という例外が発生します。
+
+~~~java
+String str = null;
+// NullPointerExceptionが発生する
+System.out.println(str.substring(1, 3));
+~~~
+
+ただし、staticフィールドとstaticメソッドはクラスに紐付くので、例外は発生しません。
+
+~~~java
+// 以下は正常に動作する
+Integer var = null;
+System.out.println(var.valueOf(100));
+System.out.println(var.MAX_VALUE);
+~~~
+
