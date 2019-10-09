@@ -388,9 +388,10 @@ public static void main(String[] args) {
 static finalのフィールドがすべて定数になるわけではなく、コンパイル時に値が決定するものだけが定数となります。
 たとえば、次のような例を考えてみます。
 
-
+~~~java
 public static final int X = 1 + 1; // 定数
 public static final int Y = new Integer(2).intValue(); // 定数ではない
+~~~
 
 この例では、フィールド「X」「Y」ともに値は「2」となります。「X」はコンパイル時に「1+ 1」の算出が行われて定数値となります。  
 しかし、「Y」は「Integer」クラスのインスタンスが作成されてからでないと値が取得できないため、コンパイル時ではなく、プログラムの実行時に値が代入されるので定数ではありません。  
