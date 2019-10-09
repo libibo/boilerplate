@@ -36,6 +36,6 @@ for %V in ( *.txt ) do %V
 
 このフォルダにある全SQLファイルを一斉に実行したい
 
-~~~.bat
+~~~dos
 for %V in ( *.sql ) do psql -d DBNAME -U USERNAME -f %V
 ~~~
