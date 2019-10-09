@@ -143,3 +143,34 @@ int val = 780;
 char ch = 'あ';
 ~~~
 
+参照型変数へ代入するときには、リテラルではなく、インスタンスを作成する必要があります。  
+ただし、String型やClass型のように、リテラルを使って代入することができるクラスもあります。  
+
+~~~java
+// staticメソッドを使ってインスタンスを作成
+Integer val = Integer.valueOf(398);
+// new演算子を使ってインスタンスを作成
+StringBuilder buf = new StringBuilder();
+// 文字列リテラルによる初期化
+String str = "ABCD";
+~~~
+変数に格納されるのはインスタンスそのものではなく、インスタンスの場所です。  
+もし、次のようなコードを実行した場合、変数「buf1」と「buf2」は同じインスタンスを指すことになります。  
+
+~~~java
+StringBuilder buf1 = new StringBuilder();
+StringBuilder buf2 = buf1;
+~~~
+
+そのため、一方の変数にだけ変更を加えたつもりでも、他方の変数にも影響を与えてしまうので気を付けてください。  
+次のコードを実行すると、「ABCXYZ」と表示されてしまいます。  
+これは、参照型の変数の中身は他の変数への参照値が入っていて、参照型の変数を代入することはその参照値をコピーするためです。  
+
+~~~java
+StringBuilder buf1 = new StringBuilder();
+StringBuilder buf2 = buf1;
+buf1.append("ABC");
+buf2.append("XYZ");
+System.out.println(buf1.toString());
+~~~
+
