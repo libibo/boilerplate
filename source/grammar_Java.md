@@ -336,3 +336,35 @@ public class SubClass extends SuperClass {
 Object x = new Integer(0);
 System.out.println((String)x); // ClassCastExceptionが発生する
 ~~~
+
+## 定数の定義
+
+Javaで定数を定義するには、フィールドを宣言するときに「static final」を付けて宣言します。  
+「final」を付けるとフィールドは値を変更できなくなるため、定数として扱うことができます。  
+「static」はなくてもかまいませんが、インスタンスごとに同じ値のフィールドが作成される無駄を省きます。
+
+Constant.java
+~~~java
+// 定数を定義するクラス
+public class Constant {
+	// 定数フィールド
+	public static final String APP_NAME = "特製アプリケーション";
+}
+~~~
+
+ConstantSample.java
+~~~java
+// 定数を使うクラス
+public class ConstantSample {
+	public static void main(String[] args) {
+		System.out.println(Constant.APP_NAME + "を開始します。");
+	}
+}
+~~~
+
+ConstantSample.javaを実行すると、次のように表示されます。
+
+> 特製アプリケーションを開始します。
+
+厳密には、「Constant.APP_NAME」は定数ではなく、定数フィールドです。  
+Javaでは定数を定義することはできません。ただし、慣習的に定数フィールドのことを「定数」といいます。
