@@ -309,3 +309,30 @@ int i = (int) true; // コンパイルエラーになる
 byte b = (byte) Integer.valueOf(9); // コンパイルエラーになる
 int i = Byte.valueOf((byte) 9); // こちらはOK
 ~~~
+
+## 参照型のキャスト
+
+参照型のキャストも基本的には同じです。スーパークラスからサブクラスへのキャストが可能です。  
+まったく関係のないクラスへのキャストはできません。
+
+~~~java
+// SuperClassのサブクラス
+public class SubClass extends SuperClass {
+	public static void main(String[] args) {
+		// スーパークラスからサブクラスへのキャストはOK
+		SubClass obj1 = (SubClass) new SuperClass();
+		// 全く関係の無いクラスへのキャストはコンパイルエラーになる
+		SubClass obj2 = (SubClass) Integer.valueOf(9);
+	}
+}
+~~~
+
+## 「ClassCastException」例外
+
+キャストが明らかに不正な場合はコンパイルエラーとなりますが、コンパイル時に判断が付かないようなケースではプログラムの実行時に「ClassCastException」例外が発生します。  
+どうしてもキャストを使用しなければならないケースもありますが、できるだけジェネリックスを使うなど、キャストを使わないほうが思わぬミスの防止になります。
+
+~~~java
+Object x = new Integer(0);
+System.out.println((String)x); // ClassCastExceptionが発生する
+~~~
