@@ -212,3 +212,52 @@ System.out.println(var.valueOf(100));
 System.out.println(var.MAX_VALUE);
 ~~~
 
+## 異なる型への代入
+
+プリミティブ型変数の場合は、宣言した変数の型が代入する値の型より広い型であれば代入することができます。  
+広い方から順に、double型、float型、long型、int型、short型、byte型となります。  
+ただし、int型の値をfloat型に、long型の値をfloat型やdouble型に代入すると桁落ちする可能性があります。  
+また、char型は文字型ですが、実際は、その文字のUnicodeの文字コードの数値（32bit）を保持しているため、int型と互換があります。  
+
+~~~java
+// 広い型への代入
+byte b = 3;
+short s = b;
+int i = s;
+long l = i;
+float f = i;
+double d = f;
+// char型をint型に代入
+char ch = 'A';
+i = ch;
+~~~
+参照型変数の場合は、その型のクラスのサブクラスや、型のインタフェースの実装クラスのインスタンスを代入することができます。
+
+SuperClass.java
+
+~~~java
+// スーパークラス
+public class SuperClass {
+}
+~~~
+Interface.java
+
+~~~java
+// インタフェース
+public interface Interface {
+}
+~~~
+
+SubClass.java
+~~~java
+// SuperClassのサブクラス
+// Interfaceの実装クラス
+public class SubClass extends SuperClass implements Interface {
+	public static void main(String[] args) {
+		// スーパークラス型の変数にサブクラスのインスタンスを代入
+		SuperClass obj1 = new SubClass();
+		// インタフェース型の変数に実装クラスのインスタンスを代入
+		Interface obj2 = new SubClass();
+	}
+}
+~~~
