@@ -5,7 +5,7 @@ tags: ["サンプル", "チュートリアル"]
 excerpt: これは抜粋です。
 ---
 
-![4.1_cn](./images/4.1_cn.png)
+
 
 ![4.1_jp](./images/4.1_jp.png)
 
