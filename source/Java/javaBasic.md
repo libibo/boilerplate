@@ -321,5 +321,5 @@ excerpt: これは抜粋です。
 
 
 
-![Collection](./images/Collection.png)
+![Collection](../images/Collection.png)
 
