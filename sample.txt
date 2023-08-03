@@ -1,0 +1,28 @@
+async.whilst(
+          function() {
+            if (endFlg || count > 300) {
+              flag = false;
+            } else {
+              flag = true;
+            }
+            return flag;
+          },
+          function(cb) {
+            count++;
+            setTimeout(function() {
+              cb(null, count);
+            }, 6000);
+          },
+          function(err, n) {
+            lockFile.unlockSync("./selenium/startFlg.json", (err, release) => {});
+            if (!endFlg) {
+              console.log("End the process for time out");
+              process.exit(1); // 異常終了
+            } else {
+              process.exit(0); // 正常終了
+            }
+          }
+        );
+      } else {
+        callback();
+      }
